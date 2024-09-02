@@ -1,4 +1,5 @@
-//sample server 
+//sample server -- does it work?
+//need to connect to npm start somehow
 const http = require('http');
 
 const server = http.createServer((req, res) => {

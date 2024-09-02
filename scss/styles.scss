@@ -1,0 +1,195 @@
+// Mixins
+@mixin clearfix() {
+
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+
+// Functions
+$lightened-color: lighten(#000, 20%);
+$darkened-color: darken(#fff, 30%);
+$adjusted-color: adjust-hue(#ff0000, 120);
+
+// Variables
+$p1-color: rgb(90, 63, 63);
+$p2-color: rgb(108, 192, 99);
+$primary-color: #d6dde4;
+$secondary-color: #6c757d;
+$accent-color: #ffc107;
+$font-family-primary: 'Roboto', sans-serif;
+$font-family-secondary: 'Open Sans', sans-serif;
+$font-size-base: 16px;
+$line-height-base: 1.5;
+$border-radius-base: 0.25rem;
+$box-shadow-base: 0 0 0.25rem rgba(0, 0, 0, 0.25);
+$spacing-base: 0.5rem;
+
+#gameboard {
+    width: 450px;
+    height: 450px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: $accent-color;
+
+}
+
+.square {
+    width: 50px;
+    height: 50px;
+    background-color: grey;
+    margin: 10px, 5px, 0px, 5px;
+    text-align: center;
+    position: relative;
+}
+
+.square svg {
+    height: 40px;
+    width: 40px;
+    margin: 5px;
+    position: relative;
+    z-index: -5;
+    /**how many layers "deep" do you want this to sit?**/
+}
+
+.square svg path {
+    position: relative;
+    z-index: -10;
+}
+
+.piece {
+    position: relative;
+    z-index: 5;
+    /**puts this in front of everything***/
+}
+
+.accentColor {
+    background-color: $accent-color;
+}
+
+.p2Color {
+    fill: $p2-color;
+
+}
+
+.p1Color {
+    fill: $p1-color
+}
+
+#info-display {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#p1-display {
+    background-color: green;
+    width: 100px;
+    height: 30px;
+}
+
+#p2-display {
+    background-color: lightblue;
+    width: 100px;
+    height: 30px;
+}
+
+// Nested Selectors
+.container {
+
+    // 1. Nested descendant selector
+    .card {
+        border: 1px solid #ccc;
+        padding: 1rem;
+    }
+
+    // 2. Nested child selector
+    >.button {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    // 3. Nested sibling selector
+    +.alert {
+        margin-top: 1rem;
+    }
+
+    // 4. Nested adjacent sibling selector
+    ~.footer {
+        margin-top: 2rem;
+    }
+
+    // 5. Nested pseudo-class selector
+    &:hover {
+        background-color: #f0f0f0;
+    }
+
+    // 6. Nested pseudo-element selector
+    &::before {
+        content: '>';
+    }
+
+    // 7. Nested compound selector
+    &.active {
+        font-weight: bold;
+    }
+
+    // 8. Nested attribute selector
+    &[data-disabled] {
+        opacity: 0.5;
+    }
+
+    // 9. Nested nested selector
+    .card {
+        &__title {
+            font-size: 1.2rem;
+        }
+
+        &__content {
+            margin-top: 0.5rem;
+        }
+    }
+
+    // 10. Nested selector with ampersand
+    &.button-group {
+        &>.button {
+            margin-right: 0.5rem;
+        }
+    }
+}
+
+// SCSS Flow Control Directives
+@if $debug {
+    // Debug-specific code
+}
+
+@for $i from 1 to 5 {
+    .item-#{$i} {
+        // Code for item 1 to 5
+    }
+}
+
+@each $color in $colors {
+    .#{$color} {
+        // Code for each color
+    }
+}
+
+@while $counter >0 {
+    // Code to execute while counter is greater than 0
+}
+
+// SCSS Partial Files
+@import 'variables';
+@import 'mixins';
+@import 'functions';
+@import 'base';
+@import 'layout';
+
+// SCSS Error-Handling Directive
+@error "This is an error message!";
+
+//use Mixins
